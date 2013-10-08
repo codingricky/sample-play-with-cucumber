@@ -6,7 +6,6 @@ import play.test.TestBrowser;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-
 public class Steps {
 
     @Inject

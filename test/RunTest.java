@@ -1,35 +1,17 @@
 
 import com.google.inject.Inject;
+import cucumber.api.java.Before;
 import cucumber.api.junit.Cucumber;
 import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
-import play.test.FakeApplication;
 import play.test.TestBrowser;
 import play.test.TestServer;
 
-import static play.test.Helpers.*;
+import static play.test.Helpers.start;
+import static play.test.Helpers.stop;
 
 @RunWith(Cucumber.class)
 @Cucumber.Options(format = {"pretty", "html:target/cucumber"})
 public class RunTest {
 
-    public static int PORT = 3333;
-    private static TestServer testServer;
-
-    @Inject
-    static TestBrowser testBrowser;
-
-    @BeforeClass
-    public static void before() {
-        FakeApplication fakeApplication = fakeApplication(inMemoryDatabase());
-        testServer = testServer(PORT, fakeApplication);
-        start(testServer);
-    }
-
-    @AfterClass
-    public static void after() {
-        stop(testServer);
-        testBrowser.quit();
-    }
 }
