@@ -6,7 +6,7 @@ import static play.test.Helpers.testBrowser;
 
 public class CucumberModule extends AbstractModule {
 
-    private TestBrowser testBrowser = testBrowser(FIREFOX, 3333);
+    private TestBrowser testBrowser = testBrowser(FIREFOX, RunTest.PORT);
 
     @Override
     protected void configure() {

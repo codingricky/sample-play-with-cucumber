@@ -14,6 +14,7 @@ import static play.test.Helpers.*;
 @Cucumber.Options(format = {"pretty", "html:target/cucumber"})
 public class RunTest {
 
+    public static int PORT = 3333;
     private static TestServer testServer;
 
     @Inject
@@ -22,7 +23,7 @@ public class RunTest {
     @BeforeClass
     public static void before() {
         FakeApplication fakeApplication = fakeApplication(inMemoryDatabase());
-        testServer = testServer(3333, fakeApplication);
+        testServer = testServer(PORT, fakeApplication);
         start(testServer);
     }
 
