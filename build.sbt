@@ -6,8 +6,10 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache,
-  "info.cukes" % "cucumber-java" % "1.1.5",
-  "info.cukes" % "cucumber-junit" % "1.1.5"
+  "com.google.inject" % "guice" % "3.0" % "test",
+  "info.cukes" % "cucumber-guice" % "1.1.5" % "test",
+  "info.cukes" % "cucumber-java" % "1.1.5" % "test",
+  "info.cukes" % "cucumber-junit" % "1.1.5" % "test"
  )     
 
 play.Project.playJavaSettings
