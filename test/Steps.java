@@ -1,4 +1,5 @@
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -11,17 +12,22 @@ public class Steps {
     @Inject
     private TestBrowser testBrowser;
 
-    @Given("^I am a test$")
-    public void I_am_a_test() throws Throwable {
-        testBrowser.goTo("http://localhost:3333");
+    @Inject
+    @Named("PORT")
+    private Integer port;
+
+    @Given("^I have setup Play$")
+    public void I_have_setup_Play() throws Throwable {
     }
 
-    @When("^I test$")
-    public void I_test() throws Throwable {
+    @When("^I go to the landing page$")
+    public void I_go_to_the_landing_page() throws Throwable {
+        testBrowser.goTo("http://localhost:" + port);
     }
 
-    @Then("^I should see \"([^\"]*)\"$")
-    public void I_should_see(String title) throws Throwable {
+    @Then("^the title should be \"([^\"]*)\"$")
+    public void the_title_should_be(String title) throws Throwable {
         assertThat(testBrowser.title()).isEqualTo(title);
     }
+
 }

@@ -14,4 +14,4 @@ libraryDependencies ++= Seq(
 
 play.Project.playJavaSettings
 
-unmanagedResourceDirectories in Compile <+= baseDirectory( _ / "features" )
+unmanagedResourceDirectories in Test <+= baseDirectory( _ / "features" )

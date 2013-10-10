@@ -1,4 +1,5 @@
 import com.google.inject.AbstractModule;
+import com.google.inject.name.Names;
 import play.test.TestBrowser;
 import play.test.TestServer;
 
@@ -15,5 +16,6 @@ public class CucumberModule extends AbstractModule {
     protected void configure() {
         bind(TestBrowser.class).toInstance(testBrowser);
         bind(TestServer.class).toInstance(testServer);
+        bind(Integer.class).annotatedWith(Names.named("PORT")).toInstance(PORT);
     }
 }

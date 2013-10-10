@@ -3,32 +3,30 @@ import cucumber.api.java.Before;
 import play.test.TestBrowser;
 import play.test.TestServer;
 
-import static play.test.Helpers.start;
+import static play.test.Helpers.*;
 
 public class GlobalHooks {
 
     @Inject
-    private TestServer testServer;
+    private TestBrowser testBrowser;
 
     @Inject
-    private TestBrowser testBrowser;
+    private TestServer testServer;
 
     private static boolean initialised = false;
 
     @Before
     public void before() {
         if (!initialised) {
-            System.out.println("starting...");
             start(testServer);
             initialised = true;
 
-            Runtime.getRuntime().addShutdownHook(new Thread("Cleaning up") {
+            Runtime.getRuntime().addShutdownHook(new Thread() {
                 @Override
                 public void run() {
                     testBrowser.quit();
-                    play.test.Helpers.stop(testServer);
+                    testServer.stop();
                 }
-
             });
         }
     }
