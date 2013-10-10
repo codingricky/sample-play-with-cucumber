@@ -22,13 +22,13 @@ public class GlobalHooks {
             start(testServer);
             initialised = true;
 
-            Runtime.getRuntime().addShutdownHook(new Thread() {
+            Runtime.getRuntime().addShutdownHook(new Thread("Cleaning up") {
                 @Override
                 public void run() {
-                    System.out.println("quitting...");
                     testBrowser.quit();
                     play.test.Helpers.stop(testServer);
                 }
+
             });
         }
     }

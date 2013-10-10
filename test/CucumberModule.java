@@ -9,7 +9,7 @@ public class CucumberModule extends AbstractModule {
     private static int PORT = 3333;
 
     private TestServer testServer = testServer(PORT, fakeApplication(inMemoryDatabase()));
-    private TestBrowser testBrowser = testBrowser(FIREFOX, PORT);
+    private TestBrowser testBrowser = testBrowser(HTMLUNIT, PORT);
 
     @Override
     protected void configure() {

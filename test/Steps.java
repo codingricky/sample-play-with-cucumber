@@ -22,6 +22,6 @@ public class Steps {
 
     @Then("^I should see \"([^\"]*)\"$")
     public void I_should_see(String title) throws Throwable {
-        assertThat(testBrowser.title()).isEqualTo("Welcome to Play");
+        assertThat(testBrowser.title()).isEqualTo(title);
     }
 }
